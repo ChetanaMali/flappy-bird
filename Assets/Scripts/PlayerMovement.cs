@@ -18,5 +18,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
-    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+        Debug.Log("Game Over!!");
+        //Destroy(gameObject);
+        Time.timeScale = 0;         // Game Stop
+       
+    }
 }
