@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return instance; } }
 
     //Pipe Related Variable
-    [SerializeField] GameObject pipePrefab;
+    public GameObject pipePrefab;
     float pipeGenerateIntervalTime = 2f;
 
     //Scoring Variable
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(pipeGenerateIntervalTime);
-            Instantiate(pipePrefab, new Vector3(3f,Random.Range( 1,2), 0), Quaternion.identity);
+            Instantiate(pipePrefab, new Vector3(3f,Random.Range( 0.6f, -0.6f), 0), Quaternion.identity);
         }
         
     }
