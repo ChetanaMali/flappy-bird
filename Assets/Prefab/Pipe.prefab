@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7372626917110389809}
   - component: {fileID: 7372626917110389808}
+  - component: {fileID: -6702721148405911776}
   - component: {fileID: 7372626917110389814}
   - component: {fileID: 7372626917110389815}
   m_Layer: 0
@@ -18,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7372626917110389809
 Transform:
   m_ObjectHideFlags: 0
@@ -61,6 +62,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 3}
   m_EdgeRadius: 0
+--- !u!114 &-6702721148405911776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7372626917110389811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3a7f6815c65ad24f8561bad3864e3e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 7498951749186730632, guid: ab78f0b8278392e45a4cd85a929aee95, type: 3}
+  hightScore: {fileID: 6703220698316843280, guid: f7cb9a3aff718e249bbe37c468ab8698, type: 3}
+  score: 0
 --- !u!114 &7372626917110389814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,6 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pipeSpeed: 1
+  scoreRef: {fileID: -6702721148405911776}
 --- !u!50 &7372626917110389815
 Rigidbody2D:
   serializedVersion: 4

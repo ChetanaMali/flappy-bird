@@ -8,9 +8,9 @@ public class Pipe : MonoBehaviour
     //[SerializeField] Rigidbody2D rb2D;
     [SerializeField] float pipeSpeed = 1f;
     float timeToDestroy = 7f;
-    
+    public Score scoreRef;
 
-
+ 
     private void Update()
     {
         transform.Translate(Vector2.left * pipeSpeed * Time.deltaTime);
@@ -20,11 +20,11 @@ public class Pipe : MonoBehaviour
     {
         //player score will be increase when player pass through the pipe
         Debug.Log("Score Increse!!");
-        GameManager.Instance.Scoring();
-        AudioManeger.Instance.PlayPointAudio();
+        scoreRef.Scoring();
+        //AudioManeger.Instance.PlayPointAudio();
+        AudioManeger.Instance.Play(Sounds.point);
         Debug.Log("Play Point Audio");
 
     }
-    
-
+   
 }

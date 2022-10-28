@@ -1,21 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager instance;
-    public static GameManager Instance { get { return instance; } }
+    //private static GameManager instance;
+    //public static GameManager Instance { get { return instance; } }
 
+    public Pipe pipeRef;
     //Pipe Related Variable
     public GameObject pipePrefab;
     float pipeGenerateIntervalTime = 2f;
-
-    //Scoring Variable
-    [SerializeField] int score = 0;
     
+    public GameObject gameOverImage;
+    public GameObject restartLevelButton;
 
-    private void Awake()
+   /* private void Awake()
     {
         if(instance == null)
         {
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
+    }*/
     void Start()
     {
         StartCoroutine(PipeSpawn());
@@ -42,10 +43,13 @@ public class GameManager : MonoBehaviour
         }
         
     }
-    public void Scoring()
+    
+    /*public void UpdatedScoring(int scorenum)
     {
-        score++;
-        UIManeger.Instance.UpdatedScoring(score);
+        //score = scorenum;
+        scoreText.text = score.ToString();
     }
+    */
+
 
 }
