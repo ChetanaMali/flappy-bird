@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb;
-    [SerializeField] float upSpeed = 200f;
-    [SerializeField] GameManager gameManeger;
+    [SerializeField] float upSpeed = 1f;
+    float rotateRate = 10f;
+    
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -15,24 +16,25 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
+            rb.velocity = new Vector2(0, upSpeed);
             //rb.AddForce(transform.up * upSpeed * Time.deltaTime);
-            rb.velocity = transform.up * upSpeed * Time.deltaTime;
+            //rb.velocity = transform.up * upSpeed * Time.deltaTime;
         }
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if()
-        
-        Debug.Log("Game Over!!");
-        AudioManeger.Instance.Play(Sounds.die);
-        //AudioManeger.Instance.PlayDieAudio();
+        AudioManeger.Instance.PlayDieAudio();
         Debug.Log("Play Die Audio");
-        //Destroy(gameObject);
         Time.timeScale = 0;       // Game Stop
-        gameManeger.gameOverImage.SetActive(true);
-        gameManeger.restartLevelButton.SetActive(true);
-        //rb.velocity = -transform.up * upSpeed * Time.deltaTime;// transform.up * upSpeed * Time.deltaTime;
+        GameManager.Instance.gameOverPanel.SetActive(true);
+        PlayerDead();
+    }
 
+    private void PlayerDead()
+    {
+        float v = transform.GetComponent<Rigidbody2D>().velocity.y;
+        float rotate = Mathf.Min(Mathf.Max(-90, v * rotateRate + 60), 30);
+        transform.rotation = Quaternion.Euler(0f, 0f, rotate);
     }
 }
