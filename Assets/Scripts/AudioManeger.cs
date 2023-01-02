@@ -9,7 +9,8 @@ public class AudioManeger : MonoBehaviour
     public static AudioManeger Instance { get { return instance; } }
 
     [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip die, hit, point;
+    [SerializeField] AudioSource backAudioSource;
+    [SerializeField] AudioClip die, hit, point, music;
     private void Awake()
     {
         if (instance == null)
@@ -23,9 +24,23 @@ public class AudioManeger : MonoBehaviour
         }
 
         audioSource = GetComponent<AudioSource>();
-        
+        backAudioSource = GetComponent<AudioSource>();
+        //BackGroundMusic();
     }
-   
+    private void OnEnable()
+    {
+        OnPlayerDie += GameManager_OnPlayerDie;
+    }
+    private void OnDisable()
+    {
+        OnPlayerDie -= GameManager_OnPlayerDie;
+    }
+    private void GameManager_OnPlayerDie()
+    {
+        PlayDieAudio();
+    }
+
+    
     public void PlayDieAudio()
     {
         audioSource.clip = die;
@@ -41,7 +56,17 @@ public class AudioManeger : MonoBehaviour
         audioSource.clip = point;
         audioSource.Play();
     }
+    public void BackGroundMusic()
+    {
+        backAudioSource.Play();
+    }
+    public delegate void AudioHandler();
+    public static event AudioHandler OnPlayerDie; //so this event can be access in other class also
+
+    // The one that's Subscribe event
+    // Subscribe
 }
+
 /* private static AudioManeger instance;
  public static AudioManeger Instance { get { return instance; } }
 

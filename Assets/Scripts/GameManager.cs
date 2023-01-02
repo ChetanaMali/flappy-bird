@@ -28,29 +28,47 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+    }
+    private void Update()
+    {
+        PipeSpawnInterval(); 
     }
     void Start()
     {
-        StartCoroutine(PipeSpawn());
+        //StartCoroutine(PipeSpawn());
     }
 
-    IEnumerator PipeSpawn()
+    /*IEnumerator PipeSpawn()
     {
         while (true)
         {
             yield return new WaitForSeconds(pipeGenerateIntervalTime);
             Instantiate(pipePrefab, new Vector3(3f,Random.Range( 0.6f, -0.6f), 0), Quaternion.identity);
-        }
-        
-    }
+        }  
+    }*/
 
     public void Scoring()
     {
         score++;
+        
         scoreText.text = score.ToString();
         finalScore.text = score.ToString();
     }
+   
+    
+    float pipeSpawnDelta;
+    private void PipeSpawnInterval()
+    {
+    //Another mothed to instantiate pipee in update without using coorutine
+        pipeSpawnDelta += Time.deltaTime;
+        if(pipeSpawnDelta > pipeGenerateIntervalTime)
+        {
+            Instantiate(pipePrefab, new Vector3(3f, Random.Range(0.6f, -0.6f), 0), Quaternion.identity);
+            pipeSpawnDelta = 0;
+        }
+    }
 
-
+    
 
 }

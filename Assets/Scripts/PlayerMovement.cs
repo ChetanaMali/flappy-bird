@@ -25,6 +25,10 @@ public class PlayerMovement : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         AudioManeger.Instance.PlayDieAudio();
+        /*if (AudioManeger.OnPlayerDie != null)
+        {
+            AudioManeger.OnPlayerDie();
+        }*/
         Debug.Log("Play Die Audio");
         Time.timeScale = 0;       // Game Stop
         GameManager.Instance.gameOverPanel.SetActive(true);
@@ -37,4 +41,5 @@ public class PlayerMovement : MonoBehaviour
         float rotate = Mathf.Min(Mathf.Max(-90, v * rotateRate + 60), 30);
         transform.rotation = Quaternion.Euler(0f, 0f, rotate);
     }
+    
 }
