@@ -27,19 +27,8 @@ public class AudioManeger : MonoBehaviour
         backAudioSource = GetComponent<AudioSource>();
         //BackGroundMusic();
     }
-   /* private void OnEnable()
-    {
-        OnPlayerDie += GameManager_OnPlayerDie;
-    }
-    private void OnDisable()
-    {
-        OnPlayerDie -= GameManager_OnPlayerDie;
-    }
-    private void GameManager_OnPlayerDie()
-    {
-        PlayDieAudio();
-    }
-*/
+   
+
     
     public void PlayDieAudio()
     {
@@ -60,9 +49,7 @@ public class AudioManeger : MonoBehaviour
     {
         backAudioSource.Play();
     }
-    public delegate void AudioHandler();
-    public static event AudioHandler OnPlayerDie; //so this event can be access in other class also
-
+    
     // The one that's Subscribe event
     // Subscribe
 }
