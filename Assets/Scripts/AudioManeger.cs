@@ -27,7 +27,7 @@ public class AudioManeger : MonoBehaviour
         backAudioSource = GetComponent<AudioSource>();
         //BackGroundMusic();
     }
-    private void OnEnable()
+   /* private void OnEnable()
     {
         OnPlayerDie += GameManager_OnPlayerDie;
     }
@@ -39,7 +39,7 @@ public class AudioManeger : MonoBehaviour
     {
         PlayDieAudio();
     }
-
+*/
     
     public void PlayDieAudio()
     {
