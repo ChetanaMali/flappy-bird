@@ -32,14 +32,15 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Play Die Audio");
         Time.timeScale = 0;       // Game Stop
         GameManager.Instance.gameOverPanel.SetActive(true);
-        PlayerDead();
+        //PlayerDead();
     }
 
+   /*
     private void PlayerDead()
     {
         float v = transform.GetComponent<Rigidbody2D>().velocity.y;
         float rotate = Mathf.Min(Mathf.Max(-90, v * rotateRate + 60), 30);
         transform.rotation = Quaternion.Euler(0f, 0f, rotate);
     }
-    
+    */
 }
